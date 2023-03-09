@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Adapter -->
+    <string name="image_content_description">Image</string>
+    <string name="title_placeholder">Grand Theft Auto IV</string>
+    <string name="year_placeholder">2014</string>
+</resources>

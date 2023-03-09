@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.rhm.capstone.home.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_nav_home_to_nav_detail"
+            app:destination="@id/nav_detail" />
+    </fragment>
+
+    <fragment
+        app:moduleName="favorite"
+        android:id="@+id/nav_favorite"
+        android:name="com.rhm.capstone.favorite.FavoriteFragment"
+        tools:layout="@layout/fragment_favorite">
+        <action
+            android:id="@+id/action_nav_favorite_to_nav_detail"
+            app:destination="@id/nav_detail">
+        </action>
+    </fragment>
+
+<!--    <fragment-->
+<!--        android:id="@+id/nav_favorite"-->
+<!--        android:name="com.rhm.capstone.favorite.FavoriteFragment"-->
+<!--        android:label="@string/favorite"-->
+<!--        tools:layout="@layout/fragment_favorite">-->
+<!--        <action-->
+<!--            android:id="@+id/action_nav_favorite_to_nav_detail"-->
+<!--            app:destination="@id/nav_detail" />-->
+<!--    </fragment>-->
+
+    <fragment
+        android:id="@+id/nav_detail"
+        android:name="com.rhm.capstone.detail.DetailFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="id"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

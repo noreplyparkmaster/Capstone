@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Capstone</string>
+    <string name="home">Home</string>
+    <string name="search_hint">Search game …</string>
+    <string name="favorite">Favorite</string>
+    <string name="image_description">Image</string>
+    <string name="description_placeholder">This is a long description.</string>
+    <string name="unknown_error_placeholder">Unknown error occurred</string>
+    <string name="empty_data">Empty data</string>
+
+    <!-- Nav Header -->
+    <string name="profile_image_content_description">Profile Image</string>
+    <string name="profile_name_placeholder">Android Studio</string>
+    <string name="profile_email_placeholder">android.studio@android.com</string>
+    <string name="title_favorite">Favorite</string>
+
+</resources>
