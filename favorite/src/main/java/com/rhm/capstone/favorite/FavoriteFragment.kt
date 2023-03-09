@@ -53,12 +53,13 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        gameAdapter = GameAdapter()
-        gameAdapter.onItemClick = { selectedGame ->
-            val toDetailFragment = FavoriteFragmentDirections.actionNavFavoriteToNavDetail(selectedGame.name)
-            toDetailFragment.id = selectedGame.id
-            findNavController().navigate(toDetailFragment)
-        }
+        gameAdapter = GameAdapter(
+            onClickItem = { selectedGame ->
+                val toDetailFragment = FavoriteFragmentDirections.actionNavFavoriteToNavDetail(selectedGame.name)
+                toDetailFragment.id = selectedGame.id
+                findNavController().navigate(toDetailFragment)
+            }
+        )
     }
 
     private fun setupView() {
@@ -75,7 +76,7 @@ class FavoriteFragment : Fragment() {
 
     private fun setupObserver() {
         favoriteViewModel.favoriteGames.observe(viewLifecycleOwner) { favoriteGames ->
-            gameAdapter.setData(favoriteGames)
+            gameAdapter.submitList(favoriteGames)
             if (favoriteGames.isNotEmpty()) {
                 binding.emptyPlaceholder.visibility = View.GONE
             } else {
@@ -87,6 +88,7 @@ class FavoriteFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvGame.adapter = null
         _binding = null
     }
 }

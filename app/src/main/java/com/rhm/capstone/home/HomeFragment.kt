@@ -2,16 +2,11 @@ package com.rhm.capstone.home
 
 import android.content.res.Configuration
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -51,12 +46,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        gameAdapter = GameAdapter()
-        gameAdapter.onItemClick = { selectedGame ->
-            val toDetailFragment = HomeFragmentDirections.actionNavHomeToNavDetail(selectedGame.name)
-            toDetailFragment.id = selectedGame.id
-            findNavController().navigate(toDetailFragment)
-        }
+        gameAdapter = GameAdapter(
+            onClickItem = { selectedGame ->
+                val toDetailFragment = HomeFragmentDirections.actionNavHomeToNavDetail(selectedGame.name)
+                toDetailFragment.id = selectedGame.id
+                findNavController().navigate(toDetailFragment)
+            }
+        )
     }
 
     private fun setupView() {
@@ -96,7 +92,7 @@ class HomeFragment : Fragment() {
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
-                    gameAdapter.setData(resource.data)
+                    gameAdapter.submitList(resource.data)
                     resource.data?.let { games ->
                         if (games.isEmpty()) {
                             binding.errorPlaceholder.visibility = View.VISIBLE
@@ -112,6 +108,7 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvGame.adapter = null
         _binding = null
     }
 }

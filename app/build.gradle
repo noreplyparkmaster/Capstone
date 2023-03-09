@@ -8,12 +8,12 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.rhm.capstone"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -48,4 +48,6 @@ dependencies {
     api "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$navigation_version"
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }
