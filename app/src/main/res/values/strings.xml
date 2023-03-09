@@ -10,7 +10,7 @@
 
     <!-- Nav Header -->
     <string name="profile_image_content_description">Profile Image</string>
-    <string name="profile_name_placeholder">Android Studio</string>
+    <string name="profile_name_placeholder">Android</string>
     <string name="profile_email_placeholder">android.studio@android.com</string>
     <string name="title_favorite">Favorite</string>
 
