@@ -1,6 +1,5 @@
 package com.rhm.capstone.core.data
 
-import android.util.Log
 import com.rhm.capstone.core.data.local.LocalDataSource
 import com.rhm.capstone.core.data.remote.RemoteDataSource
 import com.rhm.capstone.core.data.remote.network.ApiResponse
