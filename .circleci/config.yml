@@ -23,7 +23,9 @@
                 - ~/.android/cache
           - run:
               name: Run Build
-              command: ./gradlew build
+              command: ./gradlew build -PmyVariable=${RAWG_API_KEY}
+              environment:
+                - RAWG_API_KEY: ${RAWG_API_KEY}
           - run:
               name: Run Dependency Check
               command: ./gradlew dependencyCheckAnalyze

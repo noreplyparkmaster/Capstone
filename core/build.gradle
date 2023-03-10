@@ -19,7 +19,7 @@ android {
         buildConfigField("String", "RAWG_BASE_URL", "\"https://api.rawg.io/api/\"")
         Properties properties = new Properties()
         properties.load(project.rootProject.file("local.properties").newDataInputStream())
-        buildConfigField "String", "RAWG_API_KEY", "\"${properties.getProperty("RAWG_API_KEY")}\""
+        buildConfigField "String", "RAWG_API_KEY", "\"${System.getenv("RAWG_API_KEY") ?: properties.getProperty("RAWG_API_KEY") ?: ""}\""
     }
 
     buildTypes {
