@@ -82,16 +82,19 @@ class HomeFragment : Fragment() {
         homeViewModel.games.observe(viewLifecycleOwner) { resource ->
             when (resource) {
                 is Resource.Loading -> {
+                    binding.rvGame.visibility = View.GONE
                     binding.progressBar.visibility = View.VISIBLE
                     binding.errorPlaceholder.visibility = View.GONE
                 }
                 is Resource.Error -> {
+                    binding.rvGame.visibility = View.VISIBLE
                     binding.progressBar.visibility = View.GONE
                     binding.errorPlaceholder.visibility = View.VISIBLE
                     binding.errorPlaceholder.text = resource.message
                 }
                 is Resource.Success -> {
                     binding.progressBar.visibility = View.GONE
+                    binding.rvGame.visibility = View.VISIBLE
                     gameAdapter.submitList(resource.data)
                     resource.data?.let { games ->
                         if (games.isEmpty()) {

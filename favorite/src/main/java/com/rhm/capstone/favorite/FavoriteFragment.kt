@@ -78,10 +78,9 @@ class FavoriteFragment : Fragment() {
         favoriteViewModel.favoriteGames.observe(viewLifecycleOwner) { favoriteGames ->
             gameAdapter.submitList(favoriteGames)
             if (favoriteGames.isNotEmpty()) {
-                binding.emptyPlaceholder.visibility = View.GONE
+                binding.emptyAnimation.visibility = View.GONE
             } else {
-                binding.emptyPlaceholder.text = getString(R.string.empty_data)
-                binding.emptyPlaceholder.visibility = View.VISIBLE
+                binding.emptyAnimation.visibility = View.VISIBLE
             }
         }
     }

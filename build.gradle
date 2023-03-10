@@ -20,6 +20,11 @@ buildscript {
         logging_interceptor_version = '4.9.3'
         room_version = '2.4.2'
 
+        leakcanary_version = '2.10'
+        timber_version = '5.0.1'
+        lottie_version = '6.0.0'
+        shimmer_version = '0.5.0'
+
         // Require compileSdk 33
 //        core_ktx_version = '1.9.0'
 //        appcompat_version = '1.6.1'

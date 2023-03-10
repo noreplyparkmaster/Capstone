@@ -7,6 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,6 +24,7 @@ class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
                 emit(ApiResponse.Empty)
             }
         } catch (e: Exception) {
+            Timber.d(e.toString())
             emit(ApiResponse.Error(e.toString()))
         }
     }.flowOn(Dispatchers.IO)
