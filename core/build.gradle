@@ -17,7 +17,9 @@ android {
         consumerProguardFiles "consumer-rules.pro"
 
         buildConfigField("String", "RAWG_BASE_URL", "\"https://api.rawg.io/api/\"")
-        buildConfigField("String", "RAWG_API_KEY", "\"7413c123f0b246b5a976640b18d4e140\"")
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+        buildConfigField "String", "RAWG_API_KEY", "\"${properties.getProperty("RAWG_API_KEY")}\""
     }
 
     buildTypes {

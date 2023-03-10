@@ -4,6 +4,7 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
+    id 'org.owasp.dependencycheck'
 }
 apply from: '../shared_dependencies.gradle'
 
@@ -15,9 +16,10 @@ android {
         minSdk 21
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -39,6 +41,20 @@ android {
     }
     buildFeatures {
         viewBinding = true
+    }
+    dependencyCheck {
+        failBuildOnCVSS 0
+        scanConfigurations = configurations.findAll {
+            !it.name.startsWithAny('androidTest', 'test', 'debug') &&
+                    it.name.contains("DependenciesMetadata") && (
+                    it.name.startsWithAny("api", "implementation", "runtimeOnly") ||
+                            it.name.contains("Api") ||
+                            it.name.contains("Implementation") ||
+                            it.name.contains("RuntimeOnly")
+            )
+        }.collect {
+            it.name
+        }
     }
     dynamicFeatures = [':favorite']
 }

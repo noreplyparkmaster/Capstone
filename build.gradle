@@ -24,6 +24,7 @@ buildscript {
         timber_version = '5.0.1'
         lottie_version = '6.0.0'
         shimmer_version = '0.5.0'
+        dependency_check_gradle_version = '8.1.2'
 
         // Require compileSdk 33
 //        core_ktx_version = '1.9.0'
@@ -40,6 +41,7 @@ plugins {
     id 'org.jetbrains.kotlin.android' version "$kotlin_version" apply false
     id 'androidx.navigation.safeargs' version "$navigation_version" apply false
     id 'com.google.dagger.hilt.android' version "$hilt_version" apply false
+    id 'org.owasp.dependencycheck' version "$dependency_check_gradle_version" apply false
 }
 
 task clean(type: Delete) {

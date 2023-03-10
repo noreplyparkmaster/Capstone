@@ -24,6 +24,9 @@
           - run:
               name: Run Build
               command: ./gradlew build
+          - run:
+              name: Run Dependency Check
+              command: ./gradlew dependencyCheckAnalyze
           - store_artifacts: 
               path: app/build/reports
               destination: reports
